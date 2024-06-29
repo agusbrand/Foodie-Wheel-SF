@@ -50,8 +50,8 @@ const Roulette = ({ foodTrucks }: { foodTrucks: FoodTrucks }) => {
     setChosenFoodTrucks(foodTrucks[chosenFoodTruckName]);
   };
 
-  const data = Object.keys(foodTrucks).map((foodTruck, index) => ({
-    option: index + 1,
+  const data = Object.keys(foodTrucks).map((index) => ({
+    option: (index + 1).toString(),
     style: {
       backgroundColor: index % 2 === 0 ? blueGrey[50] : lightBlue[500],
       textColor: "black",
