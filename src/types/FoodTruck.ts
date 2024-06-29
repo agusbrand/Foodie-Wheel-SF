@@ -13,3 +13,7 @@ export interface FoodTruck {
   address: string;
   addressDescription: string;
 }
+
+export interface FoodTrucks {
+  [key: string]: FoodTruck[];
+}

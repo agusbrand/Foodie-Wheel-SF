@@ -1,12 +1,5 @@
-import { FoodTruck } from "../types/FoodTruck";
-
-/**
- * Fetches the San Francisco's Food Truck Permits open dataset and
- * returns an array of FoodTruck objects that are currently approved.
- *
- * Refer to the following link for more details on the dataset:
- * https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/about_data
- */
+import { FoodTrucks, FoodTruck } from "../types/FoodTruck";
+import { groupBy } from "../utils/utils";
 
 // The request to the open dataset is being cached for 12 hours.
 // This is to avoid being rate-limited, and to improve performance.
@@ -36,7 +29,14 @@ const queryParams = new URLSearchParams({
 
 const FULL_URL = `${BASE_URL}?${queryParams.toString()}`;
 
-export async function fetchFoodTrucks(): Promise<FoodTruck[]> {
+/**
+ * Fetches the San Francisco's Food Truck Permits open dataset and
+ * returns an object with the approved food trucks.
+ *
+ * Refer to the following link for more details on the dataset:
+ * https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat/about_data
+ */
+export async function fetchFoodTrucks(): Promise<FoodTrucks> {
   try {
     const response = await fetch(FULL_URL, {
       next: { revalidate: CACHE_DURATION },
@@ -47,7 +47,9 @@ export async function fetchFoodTrucks(): Promise<FoodTruck[]> {
     }
 
     const data: FoodTruck[] = await response.json();
-    return data;
+
+    const foodTrucks: FoodTrucks = groupBy(data, "name");
+    return foodTrucks;
   } catch (error) {
     throw error;
   }
