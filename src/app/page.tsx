@@ -1,16 +1,24 @@
-import { fetchFoodTrucks } from "../services/foodTruckService";
+import Container from "@mui/material/Container";
+import { FoodTruckContextProvider } from "../context/FoodTruckContext";
+import Hero from "../components/Hero";
+import RouletteWithReferences from "./RouletteWithReferences";
+import ChosenFoodTruck from "./ChosenFoodTruck";
 
 export default async function Home() {
-  const foodTrucks = await fetchFoodTrucks();
-
   return (
     <main>
-      <h1>The Food Truck Roulette</h1>
-      <div>
-        {foodTrucks.map((foodTruck) => (
-          <div key={foodTruck.id}>{foodTruck.name}</div>
-        ))}
-      </div>
+      <FoodTruckContextProvider>
+        <Container>
+          <Hero
+            title={"The Food Truck Roulette"}
+            description={
+              "Spin the wheel and let The Food Truck Roulette decide your next food truck destination!"
+            }
+          />
+          <RouletteWithReferences />
+          <ChosenFoodTruck />
+        </Container>
+      </FoodTruckContextProvider>
     </main>
   );
 }
