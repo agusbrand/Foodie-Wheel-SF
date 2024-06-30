@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useFoodTruckContext } from "../context/FoodTruckContext";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
 import FoodTruckLocations from "./FoodTruckLocations";
 
@@ -17,7 +17,7 @@ const ChosenFoodTruck: React.FC = () => {
   const foodTruckDescription = chosenFoodTrucks[0].description;
 
   return (
-    <>
+    <Box data-cy="chosen-food-truck">
       <Stack spacing={3} marginTop={12} textAlign="center">
         <Typography
           variant="h3"
@@ -37,7 +37,7 @@ const ChosenFoodTruck: React.FC = () => {
       </Stack>
 
       <FoodTruckLocations foodTrucks={chosenFoodTrucks} />
-    </>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFoodTruckContext } from "../context/FoodTruckContext";
 import dynamic from "next/dynamic";
 import { grey, blueGrey, lightBlue, red } from "@mui/material/colors";
@@ -15,6 +15,7 @@ const Wheel = dynamic(
     ssr: false,
     loading: () => (
       <Box
+        data-cy="roulette-loading"
         sx={{
           display: "flex",
           width: "100%",
@@ -31,9 +32,19 @@ const Wheel = dynamic(
 );
 
 const Roulette = ({ foodTrucks }: { foodTrucks: FoodTrucks }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   const { setChosenFoodTrucks } = useFoodTruckContext();
+
+  useEffect(() => {
+    const checkLoading = async () => {
+      await import("react-custom-roulette");
+      setIsLoading(false);
+    };
+
+    checkLoading();
+  }, []);
 
   const handleSpinClick = () => {
     if (!mustSpin) {
@@ -76,16 +87,20 @@ const Roulette = ({ foodTrucks }: { foodTrucks: FoodTrucks }) => {
         outerBorderColor={grey[800]}
         innerBorderColor={grey[800]}
         textDistance={80}
+        data-cy="roulette"
       />
-      <Button
-        variant="contained"
-        size="large"
-        onClick={handleSpinClick}
-        sx={{ marginTop: "20px" }}
-        aria-label="Spin the roulette wheel"
-      >
-        SPIN
-      </Button>
+      {isLoading ? null : (
+        <Button
+          variant="contained"
+          size="large"
+          onClick={handleSpinClick}
+          sx={{ marginTop: "20px" }}
+          aria-label="Spin the roulette wheel"
+          data-cy="spin-button"
+        >
+          SPIN
+        </Button>
+      )}
     </Box>
   );
 };
