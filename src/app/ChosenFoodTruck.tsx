@@ -2,15 +2,9 @@
 
 import React from "react";
 import { useFoodTruckContext } from "../context/FoodTruckContext";
-import {
-  Stack,
-  Typography,
-  Card,
-  CardContent,
-  CardActions,
-} from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { green } from "@mui/material/colors";
-import GoogleMapsLink from "@/components/GoogleMapsLink";
+import FoodTruckLocations from "./FoodTruckLocations";
 
 const ChosenFoodTruck: React.FC = () => {
   const { chosenFoodTrucks } = useFoodTruckContext();
@@ -42,33 +36,7 @@ const ChosenFoodTruck: React.FC = () => {
         </Typography>
       </Stack>
 
-      <Stack spacing={5} marginTop={6}>
-        <Typography fontWeight={600} fontSize={21}>
-          Food Truck Locations
-        </Typography>
-
-        {chosenFoodTrucks.map((foodTruck) => (
-          <Card key={foodTruck.id} variant="outlined" sx={{ marginBottom: 3 }}>
-            <CardContent>
-              <Typography variant="h5" component="div">
-                {foodTruck.type}
-              </Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {foodTruck.address}
-              </Typography>
-              <Typography variant="body2">
-                {foodTruck.addressDescription}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <GoogleMapsLink
-                latitude={foodTruck.latitude}
-                longitude={foodTruck.longitude}
-              />
-            </CardActions>
-          </Card>
-        ))}
-      </Stack>
+      <FoodTruckLocations foodTrucks={chosenFoodTrucks} />
     </>
   );
 };
