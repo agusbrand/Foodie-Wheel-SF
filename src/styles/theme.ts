@@ -18,6 +18,7 @@ let theme = createTheme({
   },
 });
 
+// responsiveFontSizes ensures the typography is responsive and adapts to different screen sizes
 theme = responsiveFontSizes(theme);
 
 export default theme;

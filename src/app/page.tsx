@@ -4,15 +4,15 @@ import Hero from "../components/Hero";
 import RouletteWithReferences from "./RouletteWithReferences";
 import ChosenFoodTruck from "./ChosenFoodTruck";
 
-export default async function Home() {
+export default function Home() {
   return (
     <main>
       <FoodTruckContextProvider>
-        <Container>
+        <Container maxWidth="lg">
           <Hero
-            title={"The Food Truck Roulette"}
+            title={"Foodie Wheel SF"}
             description={
-              "Spin the wheel and let The Food Truck Roulette decide your next food truck destination!"
+              "Spin the wheel and let the roulette decide your next food truck destination!"
             }
           />
           <RouletteWithReferences />

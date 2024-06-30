@@ -48,7 +48,9 @@ export async function fetchFoodTrucks(): Promise<FoodTrucks> {
 
     const data: FoodTruck[] = await response.json();
 
+    // Group the food trucks by their name
     const foodTrucks: FoodTrucks = groupBy(data, "name");
+
     return foodTrucks;
   } catch (error) {
     throw error;

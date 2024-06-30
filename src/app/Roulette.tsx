@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useFoodTruckContext } from "../context/FoodTruckContext";
 import dynamic from "next/dynamic";
-import { grey, blueGrey, lightBlue } from "@mui/material/colors";
+import { grey, blueGrey, lightBlue, red } from "@mui/material/colors";
 import CircularProgress from "@mui/material/CircularProgress";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -60,34 +60,32 @@ const Roulette = ({ foodTrucks }: { foodTrucks: FoodTrucks }) => {
 
   return (
     <Box textAlign="center">
-      <Box>
-        <Wheel
-          startingOptionIndex={0}
-          mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
-          disableInitialAnimation={true}
-          spinDuration={0.3}
-          data={data}
-          backgroundColors={["#3e3e3e", "#df3428"]}
-          textColors={["#ffffff"]}
-          onStopSpinning={onStopSpinning}
-          radiusLineWidth={0}
-          innerRadius={50}
-          innerBorderWidth={20}
-          outerBorderWidth={5}
-          outerBorderColor={grey[800]}
-          innerBorderColor={grey[800]}
-          textDistance={80}
-        />
-        <Button
-          variant="contained"
-          size="large"
-          onClick={handleSpinClick}
-          sx={{ marginTop: "20px" }}
-        >
-          SPIN
-        </Button>
-      </Box>
+      <Wheel
+        startingOptionIndex={0}
+        mustStartSpinning={mustSpin}
+        prizeNumber={prizeNumber}
+        disableInitialAnimation={true}
+        spinDuration={0.3}
+        data={data}
+        backgroundColors={[blueGrey[50], red[50]]}
+        onStopSpinning={onStopSpinning}
+        radiusLineWidth={0}
+        innerRadius={50}
+        innerBorderWidth={20}
+        outerBorderWidth={5}
+        outerBorderColor={grey[800]}
+        innerBorderColor={grey[800]}
+        textDistance={80}
+      />
+      <Button
+        variant="contained"
+        size="large"
+        onClick={handleSpinClick}
+        sx={{ marginTop: "20px" }}
+        aria-label="Spin the roulette wheel"
+      >
+        SPIN
+      </Button>
     </Box>
   );
 };
