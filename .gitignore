@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore Cypress videos and screenshots
+cypress/videos/
+cypress/screenshots/
+
+# Ignore environment-specific configuration files
+cypress.env.json
