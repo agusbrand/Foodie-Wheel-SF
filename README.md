@@ -6,21 +6,20 @@ Don’t like it? Just spin the wheel again!
 
 **Table of Contents**
 
-- [Foodie Wheel SF](#foodie-wheel-sf)
-  - [Project Description](#project-description)
-  - [Tech Stack](#tech-stack)
-  - [How To Run](#how-to-run)
-  - [Project Structure](#project-structure)
-  - [Features](#features)
-  - [Future Improvements](#future-improvements)
+- [Description](#description)
+- [Tech Stack](#tech-stack)
+- [How To Run](#how-to-run)
+- [Structure](#structure)
+- [Features](#features)
+- [Future Improvements](#future-improvements)
 
-## Project Description
+## Description
 
 Foodie Wheel SF is a web application that uses the latest [San Francisco Data API](https://dev.socrata.com/foundry/data.sfgov.org/rqzj-sfat) to get the list of active Food Trucks in San Francisco.
 
 The app is mobile-friendly, with a responsive design and a modern look and feel.
 
-**🚀 Deployed to Vercel: [Foodie Wheel SF](https://agustin-brandoni-food-truck-roulette.vercel.app/)**
+**🚀 Deployed to Vercel: [Foodie Wheel SF](https://foodie-wheel-sf.vercel.app/)**
 
 ## Tech Stack
 
@@ -47,13 +46,17 @@ The app is mobile-friendly, with a responsive design and a modern look and feel.
 2. Run `npm start`
 3. Access the app at `http://localhost:3000`
 
-**Linting and Tests**
+**Linting**
 
 - Run `npm lint`
-- Run `npm cypress:open` to open the Cypress test runner.
-- Run `npm cypress:run` to execute Cypress tests in the terminal.
 
-## Project Structure
+**Tests**
+
+- Ensure the app is running at `http://localhost:3000`
+- Run `npm cypress:open` to open the Cypress test runner
+- Run `npm cypress:run` to execute Cypress tests in the terminal
+
+## Structure
 
 - `public`: Static Assets
 - `src/app`: Application routes (NextJS Pages)
